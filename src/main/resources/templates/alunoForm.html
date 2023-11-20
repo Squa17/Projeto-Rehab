@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
- 
+
 <head>
 	<meta charset="UTF-8">
 	  <title>Rehab</title>
@@ -20,9 +20,10 @@
  
   <link href="/css/0main.css" rel="stylesheet">
 </head>
- 
+
 <body>
-	  <!-- ======= Header ======= -->
+	
+		 <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
@@ -46,25 +47,26 @@
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#hero">ReHab</a></li>
+          <li><a th:href="@{/index}">ReHab</a></li>
           <li><a href="#about">Nossos Valores</a></li>
           <li><a th:href="@{/empresas}">Parceiros - Peggue</a></li>
           <li><a href="#team">Nosso Time</a></li>
-          <li class="dropdown"><a href="#"><span>Cursos</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a th:href="@{/cursos}"><span>Cursos</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a th:href="@{/cursos/novo}">Cadastrar</a></li>
               <li class="dropdown"><a th:href="@{/cursos}"><span>Cursos</span> <i
                     class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
-                 <li><a href="#">Informatica</a></li>
+                  <li><a href="#">Informatica</a></li>
                   <li><a href="#">Programação</a></li>
                   <li><a href="#">Designer</a></li>
                 </ul>
               </li>
+              
             </ul>
           </li>
           <li><a href="#contact">Contato</a></li>
-          <li><a href="/Projeto-Rehab/site/login.html">Login</a></li>
+          <li><a th:href="@{/alunos}">Login</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -74,40 +76,55 @@
     </div>
   </header><!-- End Header -->
   
-  <main class="container">
-	<div class="row">
-			<div class="col-sm-12">
-				<h1>Cadastrar nova Empresa</h1>
+  
+
+	<div class="container mt-3">
+		<h2>Cadastro de Aluno</h2>
+		<form th:action="@{/alunos/save}" th:object="${aluno}" method="post">
+			
+			<div class="form-group">
+				<label for="nome">Nome:</label>
+				<input type="text" id="nome" class="form-control" th:field="*{nome}" />
 			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-sm-12">
-	<form th:action="@{/empresas/save}" th:object="${empresa}" method="post">
-		<div class="mb-3">
-			<label class="form-label" for="nome"> Nome: </label>
-			<input class="form-control" type="text" id="nome" th:field="*{nome}" />
-		</div>
-		<div class="mb-3">
-			<label class="form-label" for="cnpj"> Cnpj: </label>
-			<input class="form-control" type="text" id="cnpj" th:field="*{cnpj}" />
-		</div>
-		<div class="mb-3">
-			<label class="form-label" for="endereco"> Endereço: </label>
-			<input class="form-control" type="text" id="endereco" th:field="*{endereco}" />
-		</div>
-		<div class="mb-3">
-			<label class="form-label" for="contato"> Contato: </label>
-			<input class="form-control" type="text" id="contato" th:field="*{contato}" />
-		</div>
-		<div >
-			<button type="submit" class="btn btn-primary"> Salvar </button>
-		</div>
-	</form>
+			
+			<div class="form-group">
+				<label for="cpf">CPF:</label>
+				<input type="text" id="cpf" class="form-control" th:field="*{cpf}" />
+			</div>
+			
+			<div class="form-group">
+				<label for="email">Email:</label>
+				<input type="text" id="email" class="form-control" th:field="*{email}" />
+			</div>
+			<div class="form-group">
+				<label for="telefone">Telefone:</label>
+				<input type="text" id="telefone" class="form-control" th:field="*{telefone}" />
+			</div>
+			<div class="form-group">
+				<label for="imgUrl">Url da Imagem:</label>
+				<input type="text" id="imgUrl" class="form-control" th:field="*{imgUrl}" />
+			</div>
+			
+			<div class="form-group">
+				<label> Cursos:</label>
+				<div th:each="curso : ${cursos}">
+					<div class="form-check">
+						 <input class="form-check-input" type="checkbox" id="curso-${curso.id}"
+                            name="cursos" th:value="${curso.id}"
+                            th:checked="${aluno.cursos.contains(curso)}" />
+                        <label class="form-check-label" th:for="'curso-' + ${curso.id}"
+                            th:text="${curso.nome}"></label>
+					</div>
+					
+				</div>
+			</div>
+			
+			
+			
+			<button type="submit" class="btn btn-primary">Salvar</button>
+		</form>
 	</div>
-	</div>
- </main>
-  <!-- ======= Footer ======= -->
+<!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
 
     <div class="container">
@@ -165,6 +182,7 @@
 
   <!-- Template Main JS File -->
   <script src="/js/main.js"></script>
+
 </body>
- 
+
 </html>

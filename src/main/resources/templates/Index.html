@@ -13,11 +13,11 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
     rel="stylesheet">
-  <!--Bootstrap 5-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.rtl.min.css">
- <!--Icone cdn-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css">
+   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
  
   <link href="/css/0main.css" rel="stylesheet">
 </head>
@@ -48,30 +48,27 @@
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#hero">ReHab</a></li>
+          <li><a th:href="@{/index}">ReHab</a></li>
           <li><a href="#about">Nossos Valores</a></li>
           <li><a  th:href="@{/empresas}">Parceiros - Peggue</a></li>
           <li><a href="#team">Nosso Time</a></li>
-          <li class="dropdown"><a href="#"><span>Cursos</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a th:href="@{/cursos}"><span>Cursos</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i
+              <li><a th:href="@{/cursos/novo}">Cadastrar</a></li>
+              <li class="dropdown"><a href="#"><span>Cursos</span> <i
                     class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
+                  <li><a href="#">Informatica</a></li>
+                  <li><a href="#">Programção</a></li>
+                  <li><a href="#">Designer</a></li>
+              
                 </ul>
               </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              
             </ul>
           </li>
           <li><a href="#contact">Contato</a></li>
-          <li><a href="/Projeto-Rehab/site/login.html">Login</a></li>
+          <li><a th:href="@{/alunos}">Login</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -665,7 +662,7 @@
                     </p>
                     <a class="btn btn-success"
                       href="https://sage.saude.gov.br/paineis/planoCrack/lista_caps.php?output=html&" target="_blank"
-                      class="stretched-link">Encontre o CAPS na sua cidade</a>
+                      >Encontre o CAPS na sua cidade</a>
                   </div>
                 </div>
               </div><!-- # Faq item-->
@@ -759,45 +756,45 @@
                       ferramentas interativas para
                       ajudar na definição de metas, desenvolvimento de habilidades e planejamento de carreira.
                     <p><a class="btn btn-success" href="https://www.mindtools.com/" target="_blank"
-                        class="stretched-link">Clique para acessar</a></p>
+                        >Clique para acessar</a></p>
                     </p>
                     <p><strong>My Next Move: </strong>Este site, mantido pelo Departamento do Trabalho dos Estados
                       Unidos, fornece ferramentas para
                       explorar carreiras, identificar interesses e habilidades, e criar um plano para o futuro
                       profissional.
                     <p><a class="btn btn-success" href="https://www.mynextmove.org/" target="_blank"
-                        class="stretched-link">Clique para acessar</a></p>
+                       >Clique para acessar</a></p>
                     </p>
                     <p><strong>Bussola Escolar: </strong> Esse site é voltado para orientação educacional e
                       profissional. Oferece testes de interesse,
                       personalidade e habilidades, além de ajudar na escolha de cursos e carreiras.
                     <p><a class="btn btn-success" href="https://bussolaescolar.com/" target="_blank"
-                        class="stretched-link">Clique para acessar</a></p>
+                        >Clique para acessar</a></p>
                     </p>
                     <p><strong>Vida e Carreira: </strong> O Vida e Carreira disponibiliza ferramentas e informações para
                       ajudar na definição de objetivos pessoais e profissionais, incluindo orientações sobre
                       planejamento de carreira e desenvolvimento
                       pessoal.
                     <p><a class="btn btn-success" href="https://www.vidaecarreira.com/" target="_blank"
-                        class="stretched-link">Clique para acessar</a></p>
+                      >Clique para acessar</a></p>
                     </p>
                     <p><strong>Jobipedia: </strong>Focado em orientação profissional, o Jobipedia oferece conselhos
                       práticos de profissionais de recursos humanos para ajudar na construção de carreiras.
                     <p><a class="btn btn-success" href="https://www.jobipedia.org/" target="_blank"
-                        class="stretched-link">Clique para acessar</a></p>
+                        >Clique para acessar</a></p>
                     </p>
                     <p><strong>CV Maker: </strong> Este site auxilia na criação de currículos, que é uma parte
                       importante do projeto de vida,
                       especialmente quando se trata de metas profissionais.
                     <p><a class="btn btn-success" href="https://www.cvmaker.pt/" target="_blank"
-                        class="stretched-link">Clique para acessar</a></p>
+                        >Clique para acessar</a></p>
                     </p>
                     <p><strong>Coursera: </strong>Embora muitos cursos na Coursera sejam pagos, alguns são oferecidos
                       gratuitamente. Este site pode
                       ser útil para adquirir novas habilidades e conhecimentos que contribuirão para o desenvolvimento
                       pessoal e profissional.
                     <p><a class="btn btn-success" href="https://www.coursera.org" target="_blank"
-                        class="stretched-link">Clique para acessar</a></p>
+                        >Clique para acessar</a></p>
                     </p>
                     <p>Lembre-se de que, ao criar um projeto de vida, é útil combinar várias fontes de informações e
                       usar ferramentas que se alinhem aos seus objetivos específicos. Além disso, considerar a
@@ -971,16 +968,20 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/vendor/aos/aos.js"></script>
+  
+  <script src="/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="/js/main.js"></script>
+ 
+
 
 </body>
 

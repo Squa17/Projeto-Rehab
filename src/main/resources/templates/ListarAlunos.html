@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
- 
+
 <head>
 	<meta charset="UTF-8">
 	  <title>Rehab</title>
@@ -12,7 +12,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
     rel="stylesheet">
-  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="/vendor/aos/aos.css" rel="stylesheet">
   <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
@@ -20,9 +20,10 @@
  
   <link href="/css/0main.css" rel="stylesheet">
 </head>
- 
+
 <body>
-	  <!-- ======= Header ======= -->
+	
+	 <!-- ======= Header ======= -->
   <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
@@ -46,25 +47,26 @@
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#hero">ReHab</a></li>
+          <li><a th:href="@{/index}">ReHab</a></li>
           <li><a href="#about">Nossos Valores</a></li>
           <li><a th:href="@{/empresas}">Parceiros - Peggue</a></li>
           <li><a href="#team">Nosso Time</a></li>
-          <li class="dropdown"><a href="#"><span>Cursos</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a th:href="@{/cursos}"><span>Cursos</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a th:href="@{/cursos/novo}">Cadastrar</a></li>
               <li class="dropdown"><a th:href="@{/cursos}"><span>Cursos</span> <i
                     class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
-                 <li><a href="#">Informatica</a></li>
+                  <li><a href="#">Informatica</a></li>
                   <li><a href="#">Programação</a></li>
                   <li><a href="#">Designer</a></li>
                 </ul>
               </li>
+              
             </ul>
           </li>
           <li><a href="#contact">Contato</a></li>
-          <li><a href="/Projeto-Rehab/site/login.html">Login</a></li>
+          <li><a th:href="@{/alunos}">Login</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -73,41 +75,47 @@
 
     </div>
   </header><!-- End Header -->
-  
-  <main class="container">
-	<div class="row">
-			<div class="col-sm-12">
-				<h1>Cadastrar nova Empresa</h1>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-sm-12">
-	<form th:action="@{/empresas/save}" th:object="${empresa}" method="post">
-		<div class="mb-3">
-			<label class="form-label" for="nome"> Nome: </label>
-			<input class="form-control" type="text" id="nome" th:field="*{nome}" />
-		</div>
-		<div class="mb-3">
-			<label class="form-label" for="cnpj"> Cnpj: </label>
-			<input class="form-control" type="text" id="cnpj" th:field="*{cnpj}" />
-		</div>
-		<div class="mb-3">
-			<label class="form-label" for="endereco"> Endereço: </label>
-			<input class="form-control" type="text" id="endereco" th:field="*{endereco}" />
-		</div>
-		<div class="mb-3">
-			<label class="form-label" for="contato"> Contato: </label>
-			<input class="form-control" type="text" id="contato" th:field="*{contato}" />
-		</div>
-		<div >
-			<button type="submit" class="btn btn-primary"> Salvar </button>
-		</div>
-	</form>
+	<nav class="navbar navbar-expand-lg navbar-dark ">
+		<a class="navbar-brand" th:href="@{/cursos}">Listagem de Cursos</a>
+		<a class="navbar-brand" th:href="@{/alunos}">Listagem de Alunos</a>
+	</nav>
+
+	<div class="container mt-3">
+		<h2>Lista de Alunos</h2>
+		<a class="btn btn-primary mb-2" th:href="@{/alunos/novo}">Adicionar Aluno</a>
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>ID</th>
+					<th>Nome</th>
+					<th>CPF</th>
+					<th>Imagem</th>
+					<th>Email</th>
+					<th>Telefone</th>
+					<th>Curso</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="aluno : ${aluno}">
+					<td th:text="${aluno.id}"></td>
+					<td th:text="${aluno.nome}"></td>
+					<td th:text="${aluno.cpf}"></td>
+					<td><img th:src="${aluno.imgUrl}" alt="Imagem do Aluno" style="max-width: 100px; max-height: 100px;" /></td>
+					<td th:text="${aluno.email}"></td>
+					<td th:text="${aluno.telefone}"></td>
+					<td th:text="${#strings.arrayJoin(aluno.cursos.![nome], ', ')}"></td>
+					<td>
+						<a class="btn btn-info btn-sm"
+							th:href="@{/alunos/editar/{id}(id=${aluno.id})}">Editar</a>
+						<a class="btn btn-danger btn-sm"
+							th:href="@{/alunos/deletar/{id}(id=${aluno.id})}">Excluir</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	</div>
- </main>
-  <!-- ======= Footer ======= -->
+ <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
 
     <div class="container">
@@ -166,5 +174,5 @@
   <!-- Template Main JS File -->
   <script src="/js/main.js"></script>
 </body>
- 
+
 </html>
