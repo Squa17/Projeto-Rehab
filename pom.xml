@@ -46,8 +46,21 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-		
+		<dependency>
+			<groupId>br.com.exploretour</groupId>
+			<artifactId>ProjetoSpringMVC_BD</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>br.com.treinaweb</groupId>
+			<artifactId>tw-projetos</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.systen</groupId>
+			<artifactId>Aula01Spring</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
